@@ -1,0 +1,15 @@
+@url = http://localhost:3000/admin/api/rest/categories/
+###
+GET {{url}}all
+###
+GET {{url}}hero/5ea98dec91e74315d1d7a296
+###
+POST {{url}}categories
+Content-Type: application/json
+
+{
+  "name": "Kick-Ass"
+}
+
+###
+DELETE {{url}}deleteall
