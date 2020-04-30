@@ -1,4 +1,4 @@
-# 【全栈之巅】Node.js + Vue.js 全栈开发王者荣耀手机端官网和管理后台
+# 【全栈之巅】Node.js + Vue.js 全栈开发英雄联盟手机端官网和管理后台
 > 本项目学习自[Bilibili 全栈之巅](https://space.bilibili.com/341919508)
 > https://github.com/wxs77577/node-vue-moba
 
