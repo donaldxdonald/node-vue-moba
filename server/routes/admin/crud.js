@@ -5,7 +5,14 @@ module.exports = router => {
   })
 
   router.get('/', async (req, res) => {
-    let model = await req.Model.find().populate('parent').limit(10)
+    let popName = 'parent'
+    
+    // if (modelName == 'Category') {
+    //   popName = 'categories'
+    // } else {
+    //   popName = 'parent'
+    // }
+    let model = await req.Model.find().populate(popName).limit(10)
     
     res.send(model)
   })
@@ -27,4 +34,6 @@ module.exports = router => {
     let model = await req.Model.findById(req.params.id)
     res.send(model)
   })
+
+  
 }
