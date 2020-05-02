@@ -10,7 +10,7 @@
           <i class="el-icon-plus"></i> 添加广告
         </el-button>
         <el-row type="flex" style="flex-wrap: wrap">
-          <el-col :md="12" v-for="(item, index) in model.items" :key="index">
+          <el-col :md="24" v-for="(item, index) in model.items" :key="index">
             <el-form-item label="跳转链接(url)">
               <el-input v-model="item.url"></el-input>
             </el-form-item>

@@ -1,15 +1,25 @@
 module.exports = app => {
   const express = require('express')
-
+  
   const router = express.Router({
     mergeParams: true
   })
 
+
   // 通用CRUD接口
-  require('./crud')(router)
+  require('./crud')(app,router)
 
   // 上传图片接口
   require('./upload')(app)
+
+  // 登录接口
+  require('./login')(app)
+
+  // 验证token中间件
+  const auth = require('./auth')
+  
+  // 识别resource的中间件
+  const resource = require('./resource')
 
   // 测试用
   router.get('/all', async (req, res) => {
@@ -23,11 +33,22 @@ module.exports = app => {
   })
 
   
-  app.use('/admin/api/rest/:resource', async (req, res, next) => {
-    // 将resource转化为类名
-    const modelName = require('inflection').classify(req.params.resource)
-    // 识别models文件夹下的对应model，并将其赋值给req的Model，以便router访问
-    req.Model = require(`../../models/${modelName}`)
+  // 统一做错误处理
+  app.use(async (err, req, res, next) => {
+    
+    res.status(err.status).send({
+      message: err.message
+    })
+    
+    // if (err.response.data.message) {
+    //   Vue.prototype.$message({
+    //     type: 'error',
+    //     message: err.response.data.message
+    //   })
+    // }
+    
     await next()
-  }, router)
+  })
+  
+  app.use('/admin/api/rest/:resource', auth(app), resource(), router)
 }

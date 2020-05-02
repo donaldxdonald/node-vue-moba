@@ -1,28 +1,26 @@
-module.exports = router => {
-  router.post('/', async (req, res) => {
+module.exports = (app,router) => {
+  
+  
+  const auth = require('./auth')
+
+  router.post('/', auth(app), async (req, res) => {
     const model = await req.Model.create(req.body)
     res.send(model)
   })
 
-  router.get('/', async (req, res) => {
+  router.get('/', auth(app), async (req, res) => {
     let popName = 'parent'
-    
-    // if (modelName == 'Category') {
-    //   popName = 'categories'
-    // } else {
-    //   popName = 'parent'
-    // }
     let model = await req.Model.find().populate(popName).limit(10)
     
     res.send(model)
   })
 
-  router.put('/:id', async (req, res) => {
+  router.put('/:id', auth(app), async (req, res) => {
     const model = await req.Model.findByIdAndUpdate(req.params.id, req.body)
     res.send(model)
   })
 
-  router.delete('/:id', async (req, res) => {
+  router.delete('/:id', auth(app), async (req, res) => {
     await req.Model.findByIdAndDelete(req.params.id)
     res.send({
       success: true
@@ -30,7 +28,7 @@ module.exports = router => {
   })
 
 
-  router.get('/edit/:id', async (req, res) => {
+  router.get('/edit/:id', auth(app), async (req, res) => {
     let model = await req.Model.findById(req.params.id)
     res.send(model)
   })

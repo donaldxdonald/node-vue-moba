@@ -45,7 +45,6 @@ export default {
         type: "success",
         message: '上传成功'
       })
-      console.log(res);
     },
     async save() {
       let res 
