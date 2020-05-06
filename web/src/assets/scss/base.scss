@@ -121,24 +121,26 @@ a {
 // nav
 .nav {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   background-color: map-get($colors, 'white');
-  color: map-get($colors, 'primary');
+  color: map-get($colors, 'black');
   
   .nav-item {
     border-bottom: 2px solid transparent;
     padding-bottom: .2rem;
     &.active {
+      color: map-get($colors, 'primary');
       border-bottom-color: map-get($colors, 'primary');
     }
   }
-  &.nav-reverse {
+  &.nav-inverse {
     background-color: map-get($colors, 'primary');
     color: map-get($colors, 'white');
     .nav-item {
       border-bottom: 2px solid transparent;
       padding-bottom: .2rem;
       &.active {
+        color: map-get($colors, 'white');
         border-bottom-color: map-get($colors, 'white');
       }
     }
@@ -168,4 +170,11 @@ a {
 	  height: 0.7692rem;
   }
   
+}
+
+// text ellipsis
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }

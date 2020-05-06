@@ -51,4 +51,8 @@ export default {
       border-radius: 0.1538rem;
     }
   }
+
+  .home-nav img {
+    vertical-align: middle;
+  }
 </style>
