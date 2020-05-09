@@ -1,6 +1,6 @@
 <template>
   <div class="main-page">
-    <card-head class="bg-black">
+    <card-head class="home-top bg-black w-100">
       <img slot="left" class="logo_img" height="30" src="@/assets/img/logo.png" alt="">
       <div slot="center" class="mx-2 flex-1">
         <div class="text-white fz-md">王者荣耀</div>
@@ -8,7 +8,7 @@
       </div>
       <button slot="right" class="btn bg-primary">立即下载</button>
     </card-head>
-    <nav-bar class="nav-inverse px-5" :tabs='mainTabs'></nav-bar>
+    <nav-bar class="home-bottom nav-inverse px-5" :tabs='mainTabs'></nav-bar>
     <router-view></router-view>
   </div>
 </template>
@@ -31,5 +31,14 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+  .home-top {
+    position: fixed;
+    top: 0;
+    z-index: 999;
+  }
+
+  .home-bottom {
+    margin-top: 3.4615rem;
+  }
 </style>

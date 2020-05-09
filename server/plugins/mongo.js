@@ -7,5 +7,6 @@ module.exports = app => {
     useFindAndModify: false
   })
 
+  require('require-all')(__dirname + '/../models/')
 
 }

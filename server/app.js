@@ -12,6 +12,7 @@ app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 
 require('./plugins/mongo')(app)
 require('./routes/admin/index.js')(app)
+require('./routes/web/index.js')(app)
 
 
 

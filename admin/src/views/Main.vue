@@ -56,7 +56,8 @@
     </el-header>
     
     <el-main>
-      <router-view></router-view>
+      <!-- 绑定key区分使用同一组件的不同页面 -->
+      <router-view :key="$route.path"></router-view>
     </el-main>
     </el-col>
   </el-container>
