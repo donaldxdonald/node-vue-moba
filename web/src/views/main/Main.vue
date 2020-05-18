@@ -9,7 +9,7 @@
       <button slot="right" class="btn bg-primary">立即下载</button>
     </card-head>
     <nav-bar class="home-bottom nav-inverse px-5" :tabs='mainTabs'></nav-bar>
-    <router-view></router-view>
+    <router-view :key="$route.path"></router-view>
   </div>
 </template>
 

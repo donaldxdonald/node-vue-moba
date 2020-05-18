@@ -9,8 +9,8 @@ module.exports = (app,router) => {
   })
 
   router.get('/', auth(app), async (req, res) => {
-    let popName = 'parent'
-    let model = await req.Model.find().populate(popName).limit(10)
+    let popName = ['parent', 'categories']
+    let model = await req.Model.find().populate(popName)
     
     res.send(model)
   })

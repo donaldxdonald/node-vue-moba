@@ -1,7 +1,7 @@
 <template>
   <el-container style="height: 100vh">
   <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-    <el-menu router  unique-opened :default-active="$route.path" >
+    <el-menu router unique-opened :default-active="$route.path" >
       <el-submenu index="1">
         <template slot="title"><i class="el-icon-message"></i>内容管理</template>
         <el-menu-item-group>
@@ -88,7 +88,7 @@
       }
     },
     created () {
-      this.user = localStorage.user ? localStorage.user : '未知用户'
+      this.user = sessionStorage.user ? sessionStorage.user : '未知用户'
     },
     methods: {
       logOff() {
@@ -97,7 +97,7 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          localStorage.clear()
+          sessionStorage.clear()
           this.$router.push('/login')
           this.$message({
             type: 'success',

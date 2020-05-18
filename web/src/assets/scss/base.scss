@@ -20,6 +20,10 @@ a {
   color: #999;
 }
 
+p {
+  line-height: 1.5em;
+}
+
 @each $colorKey,$color in $colors {
   .text-#{$colorKey} {
     color: $color;
@@ -41,6 +45,15 @@ a {
     font-size: $size * $base-font-size;
   }
 }
+
+.text-ellipsis {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+
+
 
 // flex
 .dp-flex {
@@ -172,10 +185,9 @@ a {
   
 }
 
-// text ellipsis
-.text-ellipsis {
-  display: inline-block;
-  overflow: hidden;
-  text-overflow:ellipsis;
-  white-space: nowrap;
+// border
+@each $d in (top, right, bottom, left) {
+  .border-#{$d} {
+    border-#{$d}: 1px solid $border-color
+  }
 }

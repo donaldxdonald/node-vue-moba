@@ -3,13 +3,13 @@ import Vue from 'vue'
 import router from '../router/index.js'
 
 const request = axios.create({
-  baseURL: 'http://localhost:3000/admin/api'
+  baseURL: 'http://192.168.0.15:3000/admin/api'
 })
 
 // 全局拦截请求添加token
 request.interceptors.request.use(config => {
-  if (localStorage.token) {
-  config.headers.Authorization = 'bearer ' + (localStorage.token || '')
+  if (sessionStorage.token) {
+  config.headers.Authorization = 'bearer ' + (sessionStorage.token || '')
   }
   return config
 }, err => {

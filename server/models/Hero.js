@@ -4,7 +4,7 @@ const schema = new mongoose.Schema({
   name: {type: String},
   avatar: {type: String},
   title: {type: String},
-  categories: [{type: mongoose.SchemaTypes.ObjectId, ref:"Category"}],
+  categories: [{type: mongoose.SchemaTypes.ObjectId, ref: 'Category'}],
   skills: [{
     name: {type: String},
     icon: {type: String}
@@ -14,4 +14,4 @@ const schema = new mongoose.Schema({
   initEquips: [{type: mongoose.SchemaTypes.ObjectId, ref:"Item"}]
 })
 
-module.exports = mongoose.model('Hero', schema)
+module.exports = mongoose.model('Hero', schema, 'heroes')

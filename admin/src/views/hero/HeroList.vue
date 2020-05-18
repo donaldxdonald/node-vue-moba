@@ -1,13 +1,13 @@
 <template>
   <div class="item-list">
-    <el-table :data="heroes">
+    <el-table :data="heroes" max-height="600">
       <el-table-column prop="_id" label="ID" width="240">
       </el-table-column>
       <el-table-column prop="name" label="英雄名称" width="120">
       </el-table-column>
       <el-table-column prop="title" label="英雄称号" width="120">
       </el-table-column>
-      <el-table-column prop="categories" label="类别" width="240">
+      <el-table-column prop="categories[0].name" label="类别" width="240">
       </el-table-column>
       <el-table-column prop="avatar" label="图标" width="240">
         <template slot-scope="scope">

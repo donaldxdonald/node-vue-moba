@@ -6,21 +6,18 @@
       <div slot="right" class="iconfont icon-moreread"></div>
     </card-head>
     <template #items="{category}">
-      <div class="news-item ai-center dp-flex fz-lg mb-3" v-for="(items, index) in category.newsList" :key="index">
-        <div class="news-cate mr-1 text-info">[{{items.categoryName}}]</div>
-        <div class="news-title flex-1 text-ellipsis pr-2">{{items.title}}</div>
-        <div class="news-time fz-sm text-dark-1">{{items.createdAt | date}}</div>
-      </div>
+      <router-link 
+      tag="div"
+      :to="`/articles/${news._id}`"
+      class="news-item ai-center dp-flex fz-lg mb-3" 
+      v-for="(news, index) in category.newsList" 
+      :key="index">
+        <div class="news-cate mr-1 text-info">[{{news.categoryName}}]</div>
+        <div class="news-title flex-1 text-ellipsis pr-2">{{news.title}}</div>
+        <div class="news-time fz-sm text-dark-1">{{news.createdAt | date}}</div>
+      </router-link>
     </template>
       
-      <!-- <div class="news-flow pb-2">
-        <div class="news-item ai-center dp-flex fz-lg mb-3" >
-          <div class="news-cate mr-1">[{{item.cate}}]</div>
-          <div class="news-title flex-1 text-ellipsis">{{item.title}}</div>
-          <div class="news-time fz-sm">{{item.create_time}}</div>
-        </div>
-      </div> -->
-    </div>
   </card>
 </template>
 
@@ -45,11 +42,21 @@ export default {
   props: {
     title: {type: String, required: true},
     icon: {type: String, required: true},
-    categories: {type: Array, required: true}
   },
   data () {
     return {
+      categories: []
     }
+  },
+  methods: {
+    async fetchNewsCats() {
+      const res = await this.$request.get('/news/list')
+      this.categories = res.data  
+      
+    }
+  },
+  created () {
+    this.fetchNewsCats()
   }
 }
 </script>
