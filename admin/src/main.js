@@ -8,6 +8,21 @@ Vue.config.productionTip = false
 
 Vue.prototype.$request = request
 
+Vue.mixin({
+  computed: {
+    uploadUrl(){
+      return this.$request.defaults.baseURL + '/uploads'
+    }
+  },
+  methods: {
+    getAuthHeaders(){
+      return {
+        Authorization: 'Bearer ' + (sessionStorage.token || '')
+      }
+    }
+  }
+})
+
 new Vue({
   router,
   render: h => h(App)
