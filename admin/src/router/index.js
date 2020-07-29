@@ -24,7 +24,7 @@ Vue.use(VueRouter)
     component: Login,
     meta: { 
       isPublic: true
-     }
+    }
   },
   {
     path: '/', 
