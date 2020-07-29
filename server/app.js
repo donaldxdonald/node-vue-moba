@@ -8,10 +8,13 @@ app.set('secret', 'asd12qwez123oj')
 app.use(require('cors')())
 app.use(express.json())
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
+app.use('/admin', express.static(path.join(__dirname, '/admin')))
+app.use('/', express.static(path.join(__dirname, '/web')))
 
 
 require('./plugins/mongo')(app)
 require('./routes/admin/index.js')(app)
+require('./routes/web/index.js')(app)
 
 
 

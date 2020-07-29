@@ -17,6 +17,17 @@
                 <i v-else class="el-icon-plus avatar-uploader-icon"></i>
               </el-upload>
             </el-form-item>
+            <el-form-item label="背景图">
+              <el-upload
+                class="banner-uploader"
+                :action="uploadUrl"
+                :headers="getAuthHeaders()"
+                :show-file-list="false"
+                :on-success="res => $set(model,'banner',res.url)">
+                <img v-if="model.banner" :src="model.banner" class="banner">
+                <i v-else class="el-icon-plus banner-uploader-icon"></i>
+              </el-upload>
+            </el-form-item>
             <el-form-item label="称号">
               <el-input v-model="model.title"> </el-input>
             </el-form-item>
@@ -73,7 +84,8 @@
                 <el-form-item label="图标">
                   <el-upload
                     class="avatar-uploader"
-                    :action="$request.defaults.baseURL + '/uploads'"
+                    :action="uploadUrl"
+                    :headers="getAuthHeaders()"
                     :show-file-list="false"
                     :on-success="res => $set(item,'icon',res.url)">
                     <img v-if="item.icon" :src="item.icon" class="avatar">
@@ -167,14 +179,14 @@ export default {
 </script>
 
 <style>
-  .avatar-uploader .el-upload {
+  .avatar-uploader .el-upload .banner-uploader {
     border: 1px dashed #d9d9d9;
     border-radius: 6px;
     cursor: pointer;
     position: relative;
     overflow: hidden;
   }
-  .avatar-uploader .el-upload:hover {
+  .avatar-uploader .el-upload .banner-uploader:hover {
     border-color: #409EFF;
   }
   .avatar-uploader-icon {
@@ -185,12 +197,27 @@ export default {
     line-height: 78px;
     text-align: center;
   }
+
+  .banner-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 300px;
+    height: 100px;
+    line-height: 78px;
+    text-align: center;
+  }
   .avatar {
     width: 78px;
     height: 78px;
     display: block;
   }
+  .banner {
+    max-width: 500px;
+    height: auto;
+    display: block;
+  }
   .el-input {
     width: 240px;
   }
+
 </style>

@@ -25,7 +25,7 @@ export default {
     }
   },
   created () {
-    if (localStorage.token) {
+    if (sessionStorage.token) {
       this.$message({
         message: '你已登录'
       })
@@ -39,8 +39,8 @@ export default {
   methods: {
     async login() {
       let res = await this.$request.post('/login', this.model)
-      localStorage.token = res.data.token
-      localStorage.user = this.model.username
+      sessionStorage.token = res.data.token
+      sessionStorage.user = this.model.username
       this.$message({
         type: 'success',
         message: '登陆成功'

@@ -24,7 +24,7 @@ Vue.use(VueRouter)
     component: Login,
     meta: { 
       isPublic: true
-     }
+    }
   },
   {
     path: '/', 
@@ -63,7 +63,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (!to.meta.isPublic && !localStorage.token) {
+  if (!to.meta.isPublic && !sessionStorage.token) {
     return next('/login')
   }
   next()
