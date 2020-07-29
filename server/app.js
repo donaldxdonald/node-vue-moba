@@ -10,6 +10,7 @@ app.use(express.json())
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 app.use('/admin', express.static(path.join(__dirname, '/admin')))
 app.use('/', express.static(path.join(__dirname, '/web')))
+app.use('/shop', express.static(path.join(__dirname, '/shop')))
 
 
 require('./plugins/mongo')(app)
